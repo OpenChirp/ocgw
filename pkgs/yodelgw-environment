@@ -10,7 +10,7 @@ Package: yodelgw-environment
 Version: 1.0
 Maintainer: Craig Hesling <craig@hesling.com>
 # Pre-Depends: <comma-separated list of packages>
-Depends: vim, gui
+Depends: vim, git
 # Recommends: <comma-separated list of packages>
 # Suggests: <comma-separated list of packages>
 # Provides: <comma-separated list of packages>
