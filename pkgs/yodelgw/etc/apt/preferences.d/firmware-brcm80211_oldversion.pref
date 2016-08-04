@@ -1,0 +1,11 @@
+# Craig Hesling <craig@hesling.com>
+# August 4, 2016
+#
+# Pin firmware-brcm80211 to the jessie(stable) 0.43+rpi5 version.
+# The new version in the stretch repo doesn't seem to work.
+# We place a priority greater than 1000 to force downgrades.
+# If this patch fails some day you could do "Pin: version 0.43+rpi5"
+
+Package: firmware-brcm80211
+Pin: release n=jessie
+Pin-Priority: 1001

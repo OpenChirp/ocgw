@@ -1,16 +1,46 @@
 # Craig Hesling <craig@hesling.com>
 # July 29, 2016
 
-.PHONY: all yodelgw
+.PHONY: all yodelgw yodelgw-compile yodelgw-environment
 
-PKG_YODELGW_DIR = yodelgw
+PKG_YODELGW_DIR     = yodelgw
 PKG_YODELGW_CONTROL = $(PKG_YODELGW_DIR)/DEBIAN/control
-PKG_YODELGW_NAME = $(shell awk '/Package: /{print $$2}' $(PKG_YODELGW_CONTROL))
-PKG_YODELGW_VER = $(shell awk '/Version: /{print $$2}' $(PKG_YODELGW_CONTROL))
-PKG_YODELGW_ARCH = $(shell awk '/Architecture: /{print $$2}' $(PKG_YODELGW_CONTROL))
+PKG_YODELGW_NAME    = $(shell awk '/^Package: /{print $$2}' $(PKG_YODELGW_CONTROL))
+PKG_YODELGW_VER     = $(shell awk '/^Version: /{print $$2}' $(PKG_YODELGW_CONTROL))
+PKG_YODELGW_ARCH    = $(shell awk '/^Architecture: /{print $$2}' $(PKG_YODELGW_CONTROL))
+PKG_YODELGW_FILE    = $(PKG_YODELGW_NAME)_$(PKG_YODELGW_VER)_$(PKG_YODELGW_ARCH).deb
 
-all: yodelgw
+PKG_YODELGW_COMPILE_DIR = yodelgw-compile
+PKG_YODELGW_COMPILE_CONTROL = $(PKG_YODELGW_COMPILE_DIR)/yodelgw-compile.equivs
+PKG_YODELGW_COMPILE_NAME = $(shell awk '/^Package: /{print $$2}' $(PKG_YODELGW_COMPILE_CONTROL))
+PKG_YODELGW_COMPILE_VER = $(shell awk '/^Version: /{print $$2}' $(PKG_YODELGW_COMPILE_CONTROL))
+PKG_YODELGW_COMPILE_ARCH = $(shell awk '/^Architecture: /{print $$2}' $(PKG_YODELGW_COMPILE_CONTROL))
+PKG_YODELGW_COMPILE_FILE    = $(PKG_YODELGW_COMPILE_NAME)_$(PKG_YODELGW_COMPILE_VER)_$(PKG_YODELGW_COMPILE_ARCH).deb
 
-yodelgw:
+PKG_YODELGW_ENVIRONMENT_DIR = yodelgw-environment
+PKG_YODELGW_ENVIRONMENT_CONTROL = $(PKG_YODELGW_ENVIRONMENT_DIR)/yodelgw-environment.equivs
+PKG_YODELGW_ENVIRONMENT_NAME = $(shell awk '/^Package: /{print $$2}' $(PKG_YODELGW_ENVIRONMENT_CONTROL))
+PKG_YODELGW_ENVIRONMENT_VER = $(shell awk '/^Version: /{print $$2}' $(PKG_YODELGW_ENVIRONMENT_CONTROL))
+PKG_YODELGW_ENVIRONMENT_ARCH = $(shell awk '/^Architecture: /{print $$2}' $(PKG_YODELGW_ENVIRONMENT_CONTROL))
+PKG_YODELGW_ENVIRONMENT_FILE    = $(PKG_YODELGW_ENVIRONMENT_NAME)_$(PKG_YODELGW_ENVIRONMENT_VER)_$(PKG_YODELGW_ENVIRONMENT_ARCH).deb
+
+all: yodelgw yodelgw-compile yodelgw-environment
+
+yodelgw: builds/$(PKG_YODELGW_NAME)_$(PKG_YODELGW_VER)_$(PKG_YODELGW_ARCH).deb
+
+yodelgw-compile: builds/$(PKG_YODELGW_COMPILE_NAME)_$(PKG_YODELGW_COMPILE_VER)_$(PKG_YODELGW_COMPILE_ARCH).deb
+
+yodelgw-environment: builds/$(PKG_YODELGW_ENVIRONMENT_NAME)_$(PKG_YODELGW_ENVIRONMENT_VER)_$(PKG_YODELGW_ENVIRONMENT_ARCH).deb
+
+builds/$(PKG_YODELGW_FILE):
 	cd $(PKG_YODELGW_DIR) ;	find * -type f | grep -v DEBIAN | xargs md5sum | tee DEBIAN/md5sums
-	dpkg -b $(PKG_YODELGW_DIR) $(PKG_YODELGW_NAME)_$(PKG_YODELGW_VER)_$(PKG_YODELGW_ARCH).deb
+	dpkg -b $(PKG_YODELGW_DIR) $(PKG_YODELGW_FILE)
+	mv $(PKG_YODELGW_FILE) builds/
+
+builds/$(PKG_YODELGW_COMPILE_FILE):
+	cd $(PKG_YODELGW_COMPILE_DIR); equivs-build $(shell basename $(PKG_YODELGW_COMPILE_CONTROL))
+	mv $(PKG_YODELGW_COMPILE_DIR)/$(PKG_YODELGW_COMPILE_FILE) builds/
+
+builds/$(PKG_YODELGW_ENVIRONMENT_FILE):
+	cd $(PKG_YODELGW_ENVIRONMENT_DIR); equivs-build $(shell basename $(PKG_YODELGW_ENVIRONMENT_CONTROL))
+	mv $(PKG_YODELGW_ENVIRONMENT_DIR)/$(PKG_YODELGW_ENVIRONMENT_FILE) builds/
