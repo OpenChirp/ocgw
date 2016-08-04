@@ -7,10 +7,10 @@ Priority: optional
 Standards-Version: 3.9.2
 
 Package: yodelgw-environment
-Version: 1.0
+Version: 1.1
 Maintainer: Craig Hesling <craig@hesling.com>
 # Pre-Depends: <comma-separated list of packages>
-Depends: vim, git
+Depends: vim, git, mosquitto-clients
 # Recommends: <comma-separated list of packages>
 # Suggests: <comma-separated list of packages>
 # Provides: <comma-separated list of packages>
