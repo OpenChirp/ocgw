@@ -1,16 +1,22 @@
 #!/bin/bash
 # Craig Hesling <craig@hesling.com>
 
+# Settings #
 #SERVER=iot.andrew.cmu.edu
 SERVER=192.168.1.20
 PORT=40001
 LOG=phonehome.log
 
 # Commands to run on client and results sent to server #
+
+# You need full paths in most cases because cron runs a
+# stripped down shell environment, so PATH is not fully loaded
 cmds=( )
+cmds+=( "whoami" )
+cmds+=( "pwd" )
 cmds+=( "hostname" )
-cmds+=( "ifconfig" )
-cmds+=( "iwconfig wlan0" )
+cmds+=( "/sbin/ifconfig" )
+cmds+=( "/sbin/iwconfig wlan0" )
 
 
 # Server #
@@ -58,13 +64,13 @@ fi
 		echo "### ${cmds[$key]} ###"
 		echo
 		${cmds[$key]}
+		echo
 	done
-
-	ifconfig
 
 	echo
 	echo "#################################################"
 	echo "### END of phonehome                          ###"
 	echo "#################################################"
 
-} > /dev/tcp/$SERVER/$PORT
+} | nc $SERVER $PORT
+#} > /dev/tcp/$SERVER/$PORT
