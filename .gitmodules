@@ -4,3 +4,6 @@
 [submodule "packet_forwarder"]
 	path = src/packet_forwarder
 	url = https://github.com/Lora-net/packet_forwarder.git
+[submodule "src/go/src/github.com/brocaar/lora-gateway-bridge"]
+	path = src/go/src/github.com/brocaar/lora-gateway-bridge
+	url = https://github.com/brocaar/lora-gateway-bridge
