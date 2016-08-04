@@ -1,0 +1,70 @@
+#!/bin/bash
+# Craig Hesling <craig@hesling.com>
+
+#SERVER=iot.andrew.cmu.edu
+SERVER=192.168.1.20
+PORT=40001
+LOG=phonehome.log
+
+# Commands to run on client and results sent to server #
+cmds=( )
+cmds+=( "hostname" )
+cmds+=( "ifconfig" )
+cmds+=( "iwconfig wlan0" )
+
+
+# Server #
+if [ "$1" = "-l" ]; then
+	{
+		echo
+		echo "###################################################################################"
+		echo "########################   New Server Session Started   ###########################"
+		echo "######################## $( printf "%-31s" "`date`")###########################"
+		echo "###################################################################################"
+		echo
+	} | tee -a $LOG
+
+	seqno=0
+	while true; do
+		nc -l -p $PORT | \
+		{
+			lineno=0
+			while read line; do
+				if [ $lineno -eq 0 ]; then
+					echo
+					echo "############################# Connection $seqno ##################################"
+					echo
+				fi
+				echo $line
+				let lineno++
+			done
+		} | tee -a $LOG
+		let seqno++
+	done
+fi
+
+
+
+# Client #
+{
+	echo "#################################################"
+	echo "### START of phonehome                        ###"
+	echo "#################################################"
+	echo "### Date: $(printf "%-34s" "`date`")  ###"
+	echo "#################################################"
+
+	for key in ${!cmds[@]}; do
+		echo
+		echo "### ${cmds[$key]} ###"
+		echo
+		${cmds[$key]}
+	done
+
+	ifconfig
+
+	echo
+	echo "#################################################"
+	echo "### END of phonehome                          ###"
+	echo "#################################################"
+
+} > /dev/tcp/$SERVER/$PORT
