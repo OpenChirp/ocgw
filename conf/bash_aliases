@@ -1,0 +1,15 @@
+# Craig Hesling <craig@hesling.com>
+# August 2, 2016
+
+# Standard home bin #
+if [ -d "$HOME/bin" ]; then
+	export PATH="$HOME/bin:$PATH"
+fi
+
+# GO Environment #
+
+export GOPATH=$HOME/GoWorkspace
+
+if [ -d "$GOPATH/bin" ]; then
+	export PATH=$GOPATH/bin:$PATH
+fi
