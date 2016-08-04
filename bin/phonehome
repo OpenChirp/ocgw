@@ -11,12 +11,14 @@ LOG=phonehome.log
 
 # You need full paths in most cases because cron runs a
 # stripped down shell environment, so PATH is not fully loaded
+export PATH="/sbin:$PATH"
 cmds=( )
 cmds+=( "whoami" )
 cmds+=( "pwd" )
 cmds+=( "hostname" )
-cmds+=( "/sbin/ifconfig" )
-cmds+=( "/sbin/iwconfig wlan0" )
+cmds+=( "ifconfig" )
+cmds+=( "iwconfig wlan0" )
+cmds+=( "route -n" )
 
 
 # Server #
