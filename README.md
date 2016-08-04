@@ -28,5 +28,6 @@ golang 1.6.1.
 ------
 
 # Organization
-pkgs: Contains the Debian packages to bring up a new Yodel gateway.
-conf: Configuration files needed by the services
+
+* pkgs: Contains the Debian packages to bring up a new Yodel gateway.
+* conf: Configuration files needed by the services
