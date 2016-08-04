@@ -1,0 +1,9 @@
+Package: yodelgw
+Version: 1.6
+Architecture: armhf
+Maintainer: Craig Hesling <craig@hesling.com>
+Installed-Size: 38
+Depends: rtl-sdr, swig, python-dev, WiringPi
+Section: misc
+Priority: optional
+Description: Software to run the main yodel gateway services

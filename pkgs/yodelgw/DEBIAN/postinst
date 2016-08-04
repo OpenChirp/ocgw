@@ -1,0 +1,6 @@
+#!/bin/sh
+
+addgroup --system sdr
+udevadm control --reload-rules
+
+exit 0
