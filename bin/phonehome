@@ -2,8 +2,8 @@
 # Craig Hesling <craig@hesling.com>
 
 # Settings #
-#SERVER=iot.andrew.cmu.edu
-SERVER=192.168.1.20
+SERVER=iot.andrew.cmu.edu
+#SERVER=192.168.1.20
 PORT=40001
 LOG=phonehome.log
 
