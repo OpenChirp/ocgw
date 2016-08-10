@@ -1,3 +1,7 @@
+# Instructions
+
+Pre-built packages can be found in the `builds` directory.
+
 # Packages
 
 ### yodelgw
