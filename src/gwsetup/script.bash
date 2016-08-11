@@ -36,6 +36,17 @@ function unpack_payload()
 	fi
 }
 
+# Look for help
+case $1 in
+	-h|--help)
+		echo "Sets up a yodel gateway"
+		echo "Usage: gwsetup [-t] [-h]"
+		echo "-t: Prints the payload contents and exits"
+		echo "-h: Prints this help message"
+		exit 0
+		;;
+esac
+
 # Unpack the payload
 if ! unpack_payload $@; then
 	echo "Failed to unpack embedded payload" >&2
@@ -69,10 +80,8 @@ echo "# Changing hostname $hostname_original to $hostname in hosts and hostname 
 $ROOT_CMD sed -i "s/${hostname_original}/${hostname}/g" /etc/hostname
 $ROOT_CMD sed -i "s/${hostname_original}/${hostname}/g" /etc/hosts
 
-# Add the Comodo addtrustcertificate.crt
-
-# Install the yodelgw package
-$ROOT_CMD dpkg -i BLAHS.deb
+# Install the payload packages
+$ROOT_CMD dpkg -i $PAYLOAD_DIR/*.deb
 $ROOT_CMD apt-get install -f
 
 exit 0
