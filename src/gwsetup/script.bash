@@ -69,10 +69,19 @@ echo "# Please set the new password for user \"$TARGET_USER\" - root shall not h
 passwd $TARGET_USER
 
 echo "# Change default ~/.vimrc to have syntax on, numbers on side, and mouse click enabled"
-cat > /home/$TARGET_USER <<-EOF
+cat > /home/$TARGET_USER/.vimrc <<-EOF
 	syntax on
 	set number
 	set mouse=a
+EOF
+
+# Add .bash_aliases
+echo "# Adding standard bash aliases to ~/.bash_aliases"
+cat > /home/$TARGET_USER/.bash_aliases <<-EOF
+	# some more ls aliases
+	alias ll='ls -l'
+	alias la='ls -A'
+	alias l='ls -CF'
 EOF
 
 # Upgrade to later Raspbian release
