@@ -53,8 +53,6 @@ if ! unpack_payload $@; then
 	exit 1
 fi
 
-#set -x
-
 # Check user
 if [ ! "$(whoami)" = "$TARGET_USER" ]; then
 	echo "This script should be run under the user $TARGET_USER" >&2
@@ -66,6 +64,17 @@ read -p "Please specify the gateway's number for generating the hostname(2 would
 hostname="${HOSTNAME_PREFIX}${gwnumber}"
 echo Hostname will be \"$hostname\"
 
+# Set new password for TARGET_USER - root show not have a password
+echo "# Please set the new password for user \"$TARGET_USER\" - root shall not have a password"
+passwd $TARGET_USER
+
+echo "# Change default ~/.vimrc to have syntax on, numbers on side, and mouse click enabled"
+cat > /home/$TARGET_USER <<-EOF
+	syntax on
+	set number
+	set mouse=a
+EOF
+
 # Upgrade to later Raspbian release
 release_original=$(lsb_release -c|awk '//{print $2}')
 echo "# Upgrading to Rasp/Debian $TARGET_DEBIAN_RELEASE"
@@ -74,15 +83,25 @@ $ROOT_CMD apt-get update
 $ROOT_CMD apt-get upgrade
 $ROOT_CMD apt-get dist-upgrade
 
+# Install the payload packages
+echo "# Installing the yodelgw packages form the payload"
+$ROOT_CMD dpkg -i $PAYLOAD_DIR/*.deb
+$ROOT_CMD apt-get install -f
+
 # Change hostname
 hostname_original=`hostname`
 echo "# Changing hostname $hostname_original to $hostname in hosts and hostname files"
 $ROOT_CMD sed -i "s/${hostname_original}/${hostname}/g" /etc/hostname
 $ROOT_CMD sed -i "s/${hostname_original}/${hostname}/g" /etc/hosts
 
-# Install the payload packages
-$ROOT_CMD dpkg -i $PAYLOAD_DIR/*.deb
-$ROOT_CMD apt-get install -f
+echo "## Showing final settings ##"
+echo
+echo "Hostname: $hostname"
+echo
+$ROOT_CMD ifconfig
+
+echo
+echo "# Please reboot the gateway to allow changes to take effect"
 
 exit 0
 
