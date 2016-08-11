@@ -1,5 +1,7 @@
 8210a98da36c01e69c071e68499e3fe1  etc/udev/rules.d/10-rtl-sdr.rules
 74dbdbc239e07e97cf9eeff7bd189055  etc/apt/preferences.d/firmware-brcm80211_oldversion.pref
-a0468ba93fe3061fba60b03ac369bec9  usr/share/doc/yodelgw/copyright
+51e14b4c734e450402ea2cf73f2aee0f  usr/share/ca-certificates/yodelgw/addtrustexternalcaroot.crt
+fe2d59248ceb295947d4817d18a8b9b7  usr/share/ca-certificates/yodelgw/README.txt
 4fc63445003766be7691a5ff4efb4d08  usr/share/doc/yodelgw/README.Debian
 c8d9fb7857d6a0b6e28500efdcdd6752  usr/share/doc/yodelgw/changelog.gz
+a0468ba93fe3061fba60b03ac369bec9  usr/share/doc/yodelgw/copyright
