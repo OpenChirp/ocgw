@@ -92,8 +92,9 @@ EOF
 
 # Add .bash_aliases
 echo
-echo "# Adding standard bash aliases to ~/.bash_aliases"
-cat > /home/$TARGET_USER/.bash_aliases <<EOF
+if [ ! -e /home/$TARGET_USER/.bash_aliases ]; then
+	echo "# Adding standard bash aliases to ~/.bash_aliases"
+	cat > /home/$TARGET_USER/.bash_aliases <<EOF
 # some more ls aliases
 alias ll='ls -l'
 alias la='ls -A'
@@ -107,6 +108,9 @@ if [ -d "\$HOME/go" ]; then
 	fi
 fi
 EOF
+else
+	echo "# ~/.bash_aliases already exists. We will not touch it."
+fi
 
 # Upgrade to later Raspbian release
 echo
