@@ -93,11 +93,19 @@ EOF
 # Add .bash_aliases
 echo
 echo "# Adding standard bash aliases to ~/.bash_aliases"
-cat > /home/$TARGET_USER/.bash_aliases <<-EOF
-	# some more ls aliases
-	alias ll='ls -l'
-	alias la='ls -A'
-	alias l='ls -CF'
+cat > /home/$TARGET_USER/.bash_aliases <<EOF
+# some more ls aliases
+alias ll='ls -l'
+alias la='ls -A'
+alias l='ls -CF'
+
+if [ -d "\$HOME/go" ]; then
+	export GOPATH="\$HOME/go"
+
+	if [ -d "\$GOPATH/bin" ]; then
+		export PATH="\$GOPATH/bin"
+	fi
+fi
 EOF
 
 # Upgrade to later Raspbian release
