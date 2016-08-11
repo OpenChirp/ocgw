@@ -21,7 +21,14 @@ PAYLOAD_FILES += gwsetup_extra_payload $(PKG_BUILDS)/$(PKG_YODELGW_FILE) $(PKG_B
 
 GWSETUP_SCRIPT = script.bash
 
+.PHONY: all clean
+
+all: gwsetup
+
 gwsetup: $(GWSETUP_SCRIPT) $(PAYLOAD_FILES)
 	cp $(GWSETUP_SCRIPT) gwsetup
 	echo "PAYLOAD:" >> $@
 	tar -czv $(PAYLOAD_FILES) | base64 >> $@
+
+clean:
+	$(RM) gwsetup
