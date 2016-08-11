@@ -13,10 +13,8 @@
 # Usage: gwsetup [-t]
 # -t: Shows content of payload and then exits
 
-#ROOT_CMD=sudo
-ROOT_CMD=""
-#TARGET_USER=pi
-TARGET_USER=craig
+ROOT_CMD=sudo
+TARGET_USER=pi
 HOSTNAME_PREFIX=yodelgw
 TARGET_DEBIAN_RELEASE=stretch
 
