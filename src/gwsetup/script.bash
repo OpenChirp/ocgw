@@ -127,6 +127,14 @@ echo "# Installing the yodelgw packages form the payload"
 $ROOT_CMD dpkg -i $PAYLOAD_DIR/pkgs/builds/*.deb
 $ROOT_CMD apt-get install -f
 
+# TODO - Make it so that this script can clone the repo from the private git server
+# Clone the main yodelgw repo in home directory
+#echo
+#echo "# Cloning the main yodelgw repository in home directory. This is for receiving updates."
+#if [ ! -e /home/$TARGET_USER/yodelgw ]; then
+#	git clone git@git.wise.ece.cmu.edu:lpwan/yodelgw.git /home/$TARGET_USER/yodelgw
+#fi
+
 # TODO
 # Configure LoRa gateway ID
 echo
