@@ -4,11 +4,12 @@ a908e1861fe87c158f9416a4793d5abe  etc/lora-gateway-bridge.env
 9c16156fbf41a85eaf4dd7814e612039  etc/packet-forwarder/global_conf.json
 cc453e75a63410e878c7b9ed2d6738a7  etc/packet-forwarder/local_conf.json
 42db9d1dc45e7fb7a3543d21d72b0cfc  etc/packet-forwarder/packet-forwarder.env
-84342069515ff6b9ee2d522361f743ae  lib/systemd/system/packet-forwarder.service
+f0d9a211e41bd0708d92f54d74aff6c9  lib/systemd/system/packet-forwarder.service
 98389504c91366820958385922d7098b  lib/systemd/system/lora-gateway-bridge.service
 f3b1e7f83aba73789b9cf63b83bda58c  usr/sbin/basic_pkt_fwd
 fecc1241267481b5676c0755b1c65d6d  usr/sbin/gps_pkt_fwd
 e77492e29f244109108d68f2ee5c5846  usr/sbin/lora-gateway-bridge
+d71ffebbe86a088ba674d59700b0aeb6  usr/sbin/lora_pkt_fwd
 0f1ad4a8cb2a33cf271fef0b129351f6  usr/sbin/beacon_pkt_fwd
 a0468ba93fe3061fba60b03ac369bec9  usr/share/doc/yodelgw/copyright
 4fc63445003766be7691a5ff4efb4d08  usr/share/doc/yodelgw/README.Debian

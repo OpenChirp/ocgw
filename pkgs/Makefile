@@ -46,6 +46,7 @@ builds/$(PKG_YODELGW_FILE):
 	cp $(PACKET_FORWARDER_DIR)/beacon_pkt_fwd/beacon_pkt_fwd $(PKG_YODELGW_DIR)/usr/sbin/
 	cp $(PACKET_FORWARDER_DIR)/gps_pkt_fwd/gps_pkt_fwd $(PKG_YODELGW_DIR)/usr/sbin/
 	cp $(LORA_GATEWAY_BRIDGE_DIR)/build/lora-gateway-bridge $(PKG_YODELGW_DIR)/usr/sbin/
+	cp $(SRC_DIR)/lora_pkt_fwd $(PKG_YODELGW_DIR)/usr/sbin/
 	# Copy over current version of systemd environment files
 	mkdir -p $(PKG_YODELGW_DIR)/etc/packet-forwarder
 	cp $(CONF_DIR)/lora-gateway-bridge.env $(PKG_YODELGW_DIR)/etc/
