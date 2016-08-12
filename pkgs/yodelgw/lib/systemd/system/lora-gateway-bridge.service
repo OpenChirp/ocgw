@@ -1,0 +1,19 @@
+[Unit]
+Description=The LoRa MQTT Gateway Bridge
+Documentation=https://docs.loraserver.io/lora-gateway-bridge/
+After=network.target auditd.service
+
+[Service]
+User=lora
+Group=lora
+EnvironmentFile=/etc/lora-gateway-bridge.env
+ExecStart=/usr/sbin/lora-gateway-bridge
+#ExecReload=/bin/kill -HUP $MAINPID
+#KillMode=process
+Restart=on-failure
+#RestartPreventExitStatus=25
+#Type=notify
+
+[Install]
+WantedBy=multi-user.target
+Alias=bridge.service

@@ -1,0 +1,19 @@
+[Unit]
+Description=Semtech LoRa Packet Forwarder
+After=network.target auditd.service
+
+[Service]
+User=lora
+Group=lora
+EnvironmentFile=/etc/packet-forwarder/packet-forwarder.env
+ExecStart=/usr/sbin/${PKT_FWD_MODE}_pkt_fwd
+WorkingDirectory=/etc/packet-forwarder
+#ExecReload=/bin/kill -HUP $MAINPID
+#KillMode=process
+Restart=on-failure
+#RestartPreventExitStatus=255
+#Type=notify
+
+[Install]
+WantedBy=multi-user.target
+Alias=pktfwd.service
