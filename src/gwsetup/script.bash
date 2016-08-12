@@ -104,7 +104,7 @@ if [ -d "\$HOME/go" ]; then
 	export GOPATH="\$HOME/go"
 
 	if [ -d "\$GOPATH/bin" ]; then
-		export PATH="\$GOPATH/bin"
+		export PATH="\$GOPATH/bin:$PATH"
 	fi
 fi
 EOF
