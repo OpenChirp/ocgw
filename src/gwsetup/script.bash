@@ -127,6 +127,18 @@ echo "# Installing the yodelgw packages form the payload"
 $ROOT_CMD dpkg -i $PAYLOAD_DIR/pkgs/builds/*.deb
 $ROOT_CMD apt-get install -f
 
+# TODO
+# Configure LoRa gateway ID
+echo
+echo "# Configure LoRa gateway ID"
+echo "NOT IMPLEMENTED"
+
+# TODO
+# Configure gateway MQTT user/pass
+echo
+echo "# Configure LoRa gateway ID"
+echo "NOT IMPLEMENTED"
+
 # Force NTP to sync
 echo
 echo "# Adjusting the time from the NTP server"
