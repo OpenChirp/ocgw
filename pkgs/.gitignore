@@ -1,0 +1,6 @@
+# These conf files are copied into the package directory upon make
+yodelgw/etc/packet-forwarder/*.json
+yodelgw/etc/packet-forwarder/*.env
+yodelgw/etc/lora-gateway-bridge.env
+# These binaries are copied into the package directory upon make
+yodelgw/usr/sbin/
