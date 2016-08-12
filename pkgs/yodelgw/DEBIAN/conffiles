@@ -1,1 +1,4 @@
-/etc/udev/rules.d/10-rtl-sdr.rules
+/etc/lora-gateway-bridge.env
+/etc/packet-forwarder/packet-forwarder.env
+/etc/packet-forwarder/global_conf.json
+/etc/packet-forwarder/local_conf.json

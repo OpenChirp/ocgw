@@ -2,5 +2,6 @@
 set -e
 
 delgroup --system sdr
+deluser --system lora
 
 exit 0
