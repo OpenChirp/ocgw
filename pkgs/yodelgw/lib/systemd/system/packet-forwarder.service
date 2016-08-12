@@ -1,6 +1,6 @@
 [Unit]
 Description=Semtech LoRa Packet Forwarder
-After=network.target auditd.service
+After=network-online.target auditd.service
 
 [Service]
 User=lora

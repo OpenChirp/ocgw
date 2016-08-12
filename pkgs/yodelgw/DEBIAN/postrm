@@ -1,6 +1,9 @@
 #!/bin/sh
 set -e
 
+systemctl stop lora-gateway-bridge.service
+systemctl stop packet-forwarder.service
+
 systemctl disable lora-gateway-bridge.service
 systemctl disable packet-forwarder.service
 delgroup --system sdr

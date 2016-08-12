@@ -2,8 +2,11 @@
 
 addgroup --system sdr
 adduser --system --group --no-create-home lora
+
 systemctl enable lora-gateway-bridge.service
 systemctl enable packet-forwarder.service
+systemctl start lora-gateway-bridge.service
+systemctl start packet-forwarder.service
 
 udevadm control --reload-rules
 
