@@ -4,6 +4,9 @@ addgroup --system sdr
 adduser --system --group --no-create-home lora
 
 systemctl daemon-reload
+systemctl disable dhcpcd.service
+systemctl enable dhcpcd.service
+
 systemctl enable lora-gateway-bridge.service
 systemctl enable packet-forwarder.service
 systemctl start lora-gateway-bridge.service
