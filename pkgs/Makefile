@@ -57,7 +57,7 @@ builds/$(PKG_YODELGW_FILE):
 	# Generating the md5sums inside the package
 	cd $(PKG_YODELGW_DIR) ;	find * -type f | grep -v DEBIAN | xargs md5sum | tee DEBIAN/md5sums
 	# Build the yodelgw package
-	dpkg -b $(PKG_YODELGW_DIR) $(PKG_YODELGW_FILE)
+	fakeroot dpkg -b $(PKG_YODELGW_DIR) $(PKG_YODELGW_FILE)
 	# Move the built package into the builds directory
 	mv $(PKG_YODELGW_FILE) builds/
 
