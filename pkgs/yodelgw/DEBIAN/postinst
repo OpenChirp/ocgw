@@ -3,6 +3,7 @@
 addgroup --system sdr
 adduser --system --group --no-create-home lora
 
+systemctl daemon-reload
 systemctl enable lora-gateway-bridge.service
 systemctl enable packet-forwarder.service
 systemctl start lora-gateway-bridge.service
