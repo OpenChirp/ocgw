@@ -2,6 +2,7 @@
 Description=The LoRa MQTT Gateway Bridge
 Documentation=https://docs.loraserver.io/lora-gateway-bridge/
 After=network-online.target auditd.service
+Wants=network-online.target
 
 [Service]
 User=lora
