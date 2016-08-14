@@ -1,0 +1,21 @@
+#!/bin/bash
+# Ping and get the status of all gateways
+#
+# Craig Hesling <craig@hesling.com>
+# Auguest 13, 2016
+
+gateways=( yodelgw1.wv.cc.cmu.edu yodelgw3 )
+
+for gw in ${gateways[@]}; do
+	echo
+	echo "###### $gw ######"
+	echo
+
+	echo
+	echo "# Try pinging..."
+	ping -c4 $gw
+
+	echo
+	echo "# Get service status..."
+	ssh $gw sudo systemctl status pktfwd bridge
+done
