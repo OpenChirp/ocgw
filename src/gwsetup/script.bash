@@ -20,6 +20,9 @@ TARGET_DEBIAN_RELEASE=stretch
 
 PAYLOAD_DIR=`mktemp -d /tmp/gwsetup_payload.XXX`
 
+PKTFWD_LOCAL_CONF_FILE=/etc/packet-forwarder/local_conf.json
+BRIDGE_ENV_FILE=/etc/lora-gateway-bridge.env
+
 function unpack_payload()
 {
 	local match_line=$(grep --text --line-number '^PAYLOAD:$' $0 | cut -d ':' -f 1)
@@ -64,6 +67,15 @@ echo
 read -p "Please specify the gateway's number for generating the hostname(2 would mean ${HOSTNAME_PREFIX}2): " gwnumber
 hostname="${HOSTNAME_PREFIX}${gwnumber}"
 echo Hostname will be \"$hostname\"
+
+
+# Ask for gateway's MQTT server username
+echo
+read -p "Please specify the gateway's mqtt username: " mqtt_username
+
+# Ask for gateway's MQTT server password
+echo
+read -p "Please specify the gateway's mqtt password: " mqtt_password
 
 # Set new password for TARGET_USER - root show not have a password
 echo
@@ -135,17 +147,17 @@ $ROOT_CMD apt-get install -f
 #	git clone git@git.wise.ece.cmu.edu:lpwan/yodelgw.git /home/$TARGET_USER/yodelgw
 #fi
 
-# TODO
 # Configure LoRa gateway ID
 echo
-echo "# Configure LoRa gateway ID"
-echo "NOT IMPLEMENTED"
+gatewayid=D00D8BADF00D$(printf "%4.4d" ${gwnumber})
+echo "# Configure LoRa gateway ID to ${gatewayid}"
+$ROOT_CMD sed -i "s/D00D8BADF00D0000/${gatewayid}/g" $PKTFWD_LOCAL_CONF_FILE
 
-# TODO
 # Configure gateway MQTT user/pass
 echo
-echo "# Configure LoRa gateway ID"
-echo "NOT IMPLEMENTED"
+echo "# Configure MQTT credentials to \"${mqttusername}\" : \"${mqtt_password}\""
+$ROOT_CMD sed -i "s/someusername/\"${mqtt_username}\"/g" $BRIDGE_ENV_FILE
+$ROOT_CMD sed -i "s/somepassword/\"${mqtt_password}\"/g" $BRIDGE_ENV_FILE
 
 # Force NTP to sync
 echo
