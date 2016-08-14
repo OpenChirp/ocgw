@@ -155,7 +155,7 @@ $ROOT_CMD sed -i "s/D00D8BADF00D0000/${gatewayid}/g" $PKTFWD_LOCAL_CONF_FILE
 
 # Configure gateway MQTT user/pass
 echo
-echo "# Configure MQTT credentials to \"${mqttusername}\" : \"${mqtt_password}\""
+echo "# Configure MQTT credentials to \"${mqtt_username}\" : \"${mqtt_password}\""
 $ROOT_CMD sed -i "s/someusername/\"${mqtt_username}\"/g" $BRIDGE_ENV_FILE
 $ROOT_CMD sed -i "s/somepassword/\"${mqtt_password}\"/g" $BRIDGE_ENV_FILE
 
