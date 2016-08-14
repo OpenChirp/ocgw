@@ -1,6 +1,8 @@
 #!/bin/sh
 set -e
 
+echo "POSTRM SCRIPT: Called with \"$1\" and \"$2\""
+
 systemctl daemon-reload
 systemctl disable dhcpcd.service
 systemctl enable dhcpcd.service

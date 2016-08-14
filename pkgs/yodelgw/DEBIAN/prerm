@@ -18,6 +18,8 @@ set -e
 # the debian-policy package
 
 
+echo "PRERM SCRIPT: Called with \"$1\" and \"$2\""
+
 case "$1" in
 	purge|remove|upgrade)
 		;;
