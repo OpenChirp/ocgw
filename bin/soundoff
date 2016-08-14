@@ -4,7 +4,7 @@
 # Craig Hesling <craig@hesling.com>
 # Auguest 13, 2016
 
-gateways=( yodelgw1.wv.cc.cmu.edu yodelgw3 )
+gateways=( yodelgw1.wv.cc.cmu.edu yodelgw3 yodelgw4 )
 
 for gw in ${gateways[@]}; do
 	echo
