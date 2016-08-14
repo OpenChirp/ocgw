@@ -2,7 +2,7 @@
 Description=The LoRa MQTT Gateway Bridge
 Documentation=https://docs.loraserver.io/lora-gateway-bridge/
 After=network-online.target auditd.service
-Wants=network-online.target
+Requries=network-online.target
 
 [Service]
 User=lora
@@ -12,6 +12,7 @@ ExecStart=/usr/sbin/lora-gateway-bridge
 #ExecReload=/bin/kill -HUP $MAINPID
 #KillMode=process
 Restart=on-failure
+RestartSec=5
 #RestartPreventExitStatus=25
 #Type=notify
 

@@ -1,6 +1,7 @@
 [Unit]
 Description=Semtech LoRa Packet Forwarder
 After=network-online.target auditd.service
+Wants=network-online.target
 
 [Service]
 User=lora
@@ -11,6 +12,7 @@ ExecStart=/usr/sbin/lora_pkt_fwd
 #ExecReload=/bin/kill -HUP $MAINPID
 #KillMode=process
 Restart=on-failure
+RestartSec=5
 #RestartPreventExitStatus=255
 #Type=notify
 
