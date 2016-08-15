@@ -1,0 +1,45 @@
+#!/bin/bash
+# Monitor certain mesages from the loraserver on MQTT
+#
+# Craig Hesling <craig@hesling.com>
+# August 15, 2016
+
+USER=$USER
+PASS=PASSWORD_HERE
+
+
+run() {
+	local topic="$1"
+	exec mosquitto_sub -v -h iot.andrew.cmu.edu -u $USER -P $PASS -t "${topic}"
+}
+
+set -x
+
+case $1 in
+	gw)
+		run "gateway/#"
+		;;
+	gw*)
+		gatewayid=${1:2}
+		gatewayid_expand=$(printf "%4.4d" "${gatewayid}")
+		run "gateway/d00d8badf00d${gatewayid_expand}/#"
+		;;
+	tx)
+		run "gateway/+/tx"
+		;;
+	rx)
+		run "gateway/+/rx"
+		;;
+	app)
+		run "application/#"
+		;;
+	apptx)
+		run "application/+/+/+/tx"
+		;;
+	apprx)
+		run "application/+/+/+/rx"
+		;;
+	*)
+		run "#"
+		;;
+esac
