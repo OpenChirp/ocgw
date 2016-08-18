@@ -4,6 +4,7 @@ addgroup --system sdr
 adduser --system --group --no-create-home lora
 adduser lora gpio
 adduser lora spi
+adduser lora dialout
 
 systemctl daemon-reload
 systemctl disable dhcpcd.service
