@@ -3,7 +3,7 @@ b8ed18d243006758d12d977f61db353e  etc/udev/rules.d/75-eth-legacy-naming.rules
 8210a98da36c01e69c071e68499e3fe1  etc/udev/rules.d/10-rtl-sdr.rules
 74dbdbc239e07e97cf9eeff7bd189055  etc/apt/preferences.d/firmware-brcm80211_oldversion.pref
 a908e1861fe87c158f9416a4793d5abe  etc/lora-gateway-bridge.env
-6663671b36d8811a7aa228ca6189f21a  etc/packet-forwarder/global_conf.json
+76bab4581f878d71f5c1e064d02c6304  etc/packet-forwarder/global_conf.json
 b47be7970981466ce0efd6e9d390e727  etc/packet-forwarder/local_conf.json
 42db9d1dc45e7fb7a3543d21d72b0cfc  etc/packet-forwarder/packet-forwarder.env
 906906527e52eaa4469c16d57655914c  lib/systemd/system/packet-forwarder.service
