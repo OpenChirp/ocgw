@@ -1,0 +1,5 @@
+# Start a getty login console on any USB serial devicves plugged in
+#
+# Craig Hesling <craig@hesling.com>
+# August 19, 2016
+ACTION=="add", SUBSYSTEM=="tty", KERNEL=="ttyUSB?", TAG+="systemd", ENV{SYSTEMD_WANTS}="getty@ttyUSB%n.service"
