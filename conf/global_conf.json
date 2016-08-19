@@ -111,14 +111,14 @@
         /* forward only valid packets */
         "forward_crc_valid": true,
         "forward_crc_error": false,
-        "forward_crc_disabled": false
+        "forward_crc_disabled": false,
 	/* My experimental GPS section */
         /* GPS configuration */
-        //"gps_tty_path": "/dev/ttyAMA0",
+        "gps_tty_path": "/dev/serial0",
         /* GPS reference coordinates */
-        //"ref_latitude": 0.0,
-        //"ref_longitude": 0.0,
-        //"ref_altitude": 0,
+        "ref_latitude": 0.0,
+        "ref_longitude": 0.0,
+        "ref_altitude": 0
         /* Beaconing parameters */
         //"beacon_period": 128,
         //"beacon_period": 2,
