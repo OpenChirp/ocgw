@@ -1,5 +1,5 @@
 b8ed18d243006758d12d977f61db353e  etc/udev/rules.d/75-eth-legacy-naming.rules
-d0213af49312028e35f5ba80c5b0da6c  etc/udev/rules.d/10-ttyusb-console.rules
+2825ebc5f5246b366287e0cfbb54c0f9  etc/udev/rules.d/10-ttyusb-console.rules
 8210a98da36c01e69c071e68499e3fe1  etc/udev/rules.d/10-rtl-sdr.rules
 74dbdbc239e07e97cf9eeff7bd189055  etc/apt/preferences.d/firmware-brcm80211_oldversion.pref
 a908e1861fe87c158f9416a4793d5abe  etc/lora-gateway-bridge.env

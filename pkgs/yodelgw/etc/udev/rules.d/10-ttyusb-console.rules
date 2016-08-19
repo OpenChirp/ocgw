@@ -2,4 +2,4 @@
 #
 # Craig Hesling <craig@hesling.com>
 # August 19, 2016
-ACTION=="add", SUBSYSTEM=="tty", KERNEL=="ttyUSB?", TAG+="systemd", ENV{SYSTEMD_WANTS}="getty@ttyUSB%n.service"
+ACTION=="add", SUBSYSTEM=="tty", KERNEL=="ttyUSB?", RUN+="/bin/stty -F /dev/ttyUSB%n 115200", TAG+="systemd", ENV{SYSTEMD_WANTS}="getty@ttyUSB%n.service"
