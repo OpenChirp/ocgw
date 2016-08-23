@@ -2,13 +2,14 @@ b8ed18d243006758d12d977f61db353e  etc/udev/rules.d/75-eth-legacy-naming.rules
 2825ebc5f5246b366287e0cfbb54c0f9  etc/udev/rules.d/10-ttyusb-console.rules
 8210a98da36c01e69c071e68499e3fe1  etc/udev/rules.d/10-rtl-sdr.rules
 74dbdbc239e07e97cf9eeff7bd189055  etc/apt/preferences.d/firmware-brcm80211_oldversion.pref
-a908e1861fe87c158f9416a4793d5abe  etc/lora-gateway-bridge.env
+c0d3f545dd9bea7101fb1a9c7bc92980  etc/lora-gateway-bridge.env
 76bab4581f878d71f5c1e064d02c6304  etc/packet-forwarder/global_conf.json
 b47be7970981466ce0efd6e9d390e727  etc/packet-forwarder/local_conf.json
 42db9d1dc45e7fb7a3543d21d72b0cfc  etc/packet-forwarder/packet-forwarder.env
 906906527e52eaa4469c16d57655914c  lib/systemd/system/packet-forwarder.service
 d433b90352a578db158cadafe29e9c4e  lib/systemd/system/dhcpcd.service.d/waitfix.conf
 319b5241e9ee7cf98bc4462c06ff72a6  lib/systemd/system/lora-gateway-bridge.service
+5a7905073bccd09f147acb62a59218f8  lib/systemd/system.conf.d/watchdog.conf
 f3b1e7f83aba73789b9cf63b83bda58c  usr/sbin/basic_pkt_fwd
 fecc1241267481b5676c0755b1c65d6d  usr/sbin/gps_pkt_fwd
 e77492e29f244109108d68f2ee5c5846  usr/sbin/lora-gateway-bridge
