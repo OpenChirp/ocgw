@@ -8,7 +8,7 @@ b47be7970981466ce0efd6e9d390e727  etc/packet-forwarder/local_conf.json
 42db9d1dc45e7fb7a3543d21d72b0cfc  etc/packet-forwarder/packet-forwarder.env
 906906527e52eaa4469c16d57655914c  lib/systemd/system/packet-forwarder.service
 d433b90352a578db158cadafe29e9c4e  lib/systemd/system/dhcpcd.service.d/waitfix.conf
-319b5241e9ee7cf98bc4462c06ff72a6  lib/systemd/system/lora-gateway-bridge.service
+071e06f96b3755b9f25b62642c59f5b2  lib/systemd/system/lora-gateway-bridge.service
 5a7905073bccd09f147acb62a59218f8  lib/systemd/system.conf.d/watchdog.conf
 f3b1e7f83aba73789b9cf63b83bda58c  usr/sbin/basic_pkt_fwd
 fecc1241267481b5676c0755b1c65d6d  usr/sbin/gps_pkt_fwd
