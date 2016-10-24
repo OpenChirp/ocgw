@@ -1,0 +1,34 @@
+#!/bin/bash
+# Requires ssh config to redirect hostnames and ssh auth
+
+# first and last gateway numbers
+FIRST=2
+LAST=4
+
+# get temp directory to store outputs from gateways
+tmpdir=`mktemp -d /tmp/runall.XXX`
+
+input=""
+while [ "$input" != "y" ] && [ "$input" != "n" ]; do
+	echo -n "Run \"$@\" on all yodelgws(y/n)? "
+	read -N1 input
+done
+echo
+
+if [ "$input" != "y" ]; then
+	echo "# Canceled"
+	exit 0
+fi
+
+echo "# Running ..."
+
+for num in `seq $FIRST $LAST`; do
+	ssh yodelgw${num} $@ &> $tmpdir/${num}.txt &
+done
+
+# wait for all to finish
+wait
+for num in `seq $FIRST $LAST`; do
+	echo "# ssh yodelgw${num} $@"
+	cat $tmpdir/${num}.txt
+done
