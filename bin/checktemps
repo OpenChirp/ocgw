@@ -7,4 +7,4 @@ if [ ! -x ./runall ]; then
 	exit 1
 fi
 
-./runall vcgencmd measure_temp
+yes | ./runall vcgencmd measure_temp
