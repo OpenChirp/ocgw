@@ -2,8 +2,10 @@
 # Requires ssh config to redirect hostnames and ssh auth
 
 # first and last gateway numbers
-FIRST=2
+FIRST=1
 LAST=4
+
+GWS=${GWS:-`seq $FIRST $LAST`}
 
 # get temp directory to store outputs from gateways
 tmpdir=`mktemp -d /tmp/runall.XXX`
@@ -22,13 +24,16 @@ fi
 
 echo "# Running ..."
 
-for num in `seq $FIRST $LAST`; do
+for num in $GWS; do
+	echo ssh yodelgw${num} $@ 
 	ssh yodelgw${num} $@ &> $tmpdir/${num}.txt &
 done
 
 # wait for all to finish
+echo "# Waiting for all to finish ..."
 wait
-for num in `seq $FIRST $LAST`; do
+for num in $GWS; do
+	echo
 	echo "# ssh yodelgw${num} $@"
 	cat $tmpdir/${num}.txt
 done

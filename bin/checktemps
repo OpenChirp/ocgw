@@ -1,0 +1,10 @@
+#!/bin/bash
+#
+# Get all gateways core temperature
+
+if [ ! -x ./runall ]; then
+	echo "Error - Must be in bin directory with runall command"
+	exit 1
+fi
+
+yes | ./runall vcgencmd measure_temp

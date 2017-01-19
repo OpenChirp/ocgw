@@ -1,0 +1,71 @@
+#!/bin/bash
+#
+# This script will ensure required packages are installed,
+# bind kernel backed directories, and chroot into an already
+# mounted ARM (RPi) filesystem.
+# Upon exit, this tool will unmount special kernel baced directories.
+#
+# This is useful when an RPi fails to boot and you need to investigate/fix
+# the issue.
+#
+# Craig Hesling <craig@hesling.com>
+
+qemuinstalled=$(dpkg -l qemu-user-static | grep qemu-user-static | cut -d ' ' -f1)
+binfmtinstalled=$(dpkg -l binfmt-support | grep binfmt-support | cut -d ' ' -f1)
+
+if [ "$qemuinstalled" != "ii" ] || [ "$binfmtinstalled" != ii ]; then
+	echo "Please ensure that qemu-user-static and binfmt-support are installed" >&2
+	exit 1
+fi
+
+if [ $# -lt 1 ] || [ "$1" = "-h" -o "$1" = "--help" ] || [ ! -x "${1}/bin/bash" ]; then
+	echo "Usage: rpichroot <RPi_mounted_filesystem>"
+	echo
+	echo "This tool will chroot into an already mounted ARM filesystem"
+	exit 0
+fi
+
+root=$1
+
+# Check that the filesystem has the standard sys, proc, dev, and /usr/bin directories to bind to
+if [ ! -d "$root/sys" ]; then
+	echo "Error - Something doesn't feel right, the filesystem doesn't have a sys directory"
+	exit 1
+fi
+
+if [ ! -d "$root/proc" ]; then
+	echo "Error - Something doesn't feel right, the filesystem doesn't have a proc directory"
+	exit 1
+fi
+
+if [ ! -d "$root/dev" ]; then
+	echo "Error - Something doesn't feel right, the filesystem doesn't have a dev directory"
+	exit 1
+fi
+
+if [ ! -d "$root/usr/bin" ]; then
+	echo "Error - Something doesn't feel right, the filesystem doesn't have a /usr/bin directory"
+	exit 1
+fi
+
+echo "# Mounting special kernel directories"
+#sudo mount --rbind /dev $root/dev
+#sudo mount -t proc none $root/proc
+#sudo mount -o bind /sys $root/sys
+sudo mount --rbind /dev $root/dev
+sudo mount -t proc none $root/proc
+sudo mount --rbind /sys $root/sys
+
+echo "# Copying over the qemu-arm-static binary"
+sudo cp `which qemu-arm-static` $root/usr/bin/
+
+echo "# Chrooting into RPi filesystem"
+sudo chroot $root qemu-arm-static /bin/bash
+
+echo "# Removing the qemu-arm-static binary from target filesystem"
+sudo rm $root/usr/bin/qemu-arm-static
+
+echo "# Unmounting special kernel directories"
+sudo umount $root/dev
+sudo umount $root/proc
+sudo umount $root/sys
