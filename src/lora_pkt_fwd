@@ -1,0 +1,22 @@
+#!/bin/sh
+# Redirect systemd to the proper packet forwarder binary.
+# This will later be replaced with the new single packet forwarder
+# binary, which happens to be named lora_pkt_fwd.
+#
+# Craig Hesling <craig@hesling.com>
+# August 12, 2016
+
+# If undefined choose basic
+PKT_FWD_MODE=${PKT_FWD_MODE:-basic}
+
+
+# Reset concentrator board
+gpio -1 mode 29 out
+gpio -1 write 29 0
+sleep 0.1
+gpio -1 write 29 1
+sleep 0.1
+gpio -1 write 29 0
+sleep 0.1
+
+exec /usr/sbin/${PKT_FWD_MODE}_pkt_fwd
