@@ -139,6 +139,18 @@ echo "# Installing the yodelgw packages form the payload"
 $ROOT_CMD dpkg -i $PAYLOAD_DIR/pkgs/builds/*.deb
 $ROOT_CMD apt-get install -f
 
+# Since the yodelgw package installs an apt preferences
+# config that calls for a downgrade of a wireless package, 
+# we need to do an additional upgrade to trigger the downgrade.
+# The priority of the preference is high enough to force it
+# during normal upgrade.
+#
+# We do a full update, upgrade, and dist-upgrade to allow future
+# preferences and source modifications.
+$ROOT_CMD apt-get update
+$ROOT_CMD apt-get upgrade
+$ROOT_CMD apt-get dist-upgrade
+
 # TODO - Make it so that this script can clone the repo from the private git server
 # Clone the main yodelgw repo in home directory
 #echo
