@@ -7,11 +7,11 @@ Priority: optional
 Standards-Version: 3.9.2
 
 Package: yodelgw-compile
-Version: 1.7
+Version: 1.8
 Maintainer: Craig Hesling <craig@hesling.com>
 # Pre-Depends: <comma-separated list of packages>
 # Needs Raspbian Stretch for golang 1.6.1 . Change in source.list to upgrade to stretch.
-Depends: equivs, build-essential, golang(>=2:1.6.1)
+Depends: equivs, packaging-dev, build-essential, golang(>=2:1.6.1)
 # Recommends: <comma-separated list of packages>
 # Suggests: <comma-separated list of packages>
 # Provides: <comma-separated list of packages>
