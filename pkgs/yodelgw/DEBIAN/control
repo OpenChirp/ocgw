@@ -1,9 +1,12 @@
 Package: yodelgw
-Version: 1.29
+Version: 1.31
 Architecture: armhf
 Maintainer: Craig Hesling <craig@hesling.com>
 Installed-Size: 38
-Depends: libc6, rtl-sdr, swig, python-dev, wiringpi, ntp
+Depends: libc6, init-system-helpers, adduser, rtl-sdr, swig, python-dev, wiringpi, ntp
 Section: misc
 Priority: optional
-Description: Software to run the main yodel gateway services
+Homepage: http://OpenChirp.io
+Description: Runs an OpenChirp gateway
+ This package installs the services and configuration needed
+ to run an OpenChirp gateway.

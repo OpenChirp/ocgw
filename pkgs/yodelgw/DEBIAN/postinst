@@ -1,7 +1,8 @@
 #!/bin/sh
 
+# These need to succeed
 addgroup --system sdr
-adduser --system --group --no-create-home  --home /nonexistent lora
+adduser --system --group --no-create-home --home /nonexistent lora
 adduser lora gpio
 adduser lora spi
 adduser lora dialout
