@@ -4,7 +4,8 @@
 .PHONY: all yodelgw yodelgw-compile yodelgw-environment
 
 PKG_YODELGW_DIR     = yodelgw
-PKG_YODELGW_CONTROL = $(PKG_YODELGW_DIR)/DEBIAN/control
+PKG_YODELGW_DEBIAN  = $(PKG_YODELGW_DIR)/DEBIAN
+PKG_YODELGW_CONTROL = $(PKG_YODELGW_DEBIAN)/control
 PKG_YODELGW_NAME    = $(shell awk '/^Package: /{print $$2}' $(PKG_YODELGW_CONTROL))
 PKG_YODELGW_VER     = $(shell awk '/^Version: /{print $$2}' $(PKG_YODELGW_CONTROL))
 PKG_YODELGW_ARCH    = $(shell awk '/^Architecture: /{print $$2}' $(PKG_YODELGW_CONTROL))
