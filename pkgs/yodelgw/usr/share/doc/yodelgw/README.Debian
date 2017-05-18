@@ -1,5 +1,14 @@
 yodelgw for Debian
 
+The following is a list of it's responsibilities:
+* Create symbolic link and set permissions for rtl sdr (group is "sdr")
+* Force the old eth0 naming
+* Enable console on FTDI usb to serial adapter hot plug
+* Set preference (downgrade priority) for older wireless firmware
+* Add systemd services for lora-gateway-bridge and packet-forwarder
+* Added systemd dependency to fix wait for network
+* Provide binaries for lora-gateway-bridge and packet-forwarder services
+* Enable systemd watchdog
 
 We no longer need the addtrustexternal.crt certificate, since the
 ca-certificates package provides the exact same cert. It can be 
