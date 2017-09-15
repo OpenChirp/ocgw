@@ -7,3 +7,6 @@
 [submodule "src/go/src/github.com/brocaar/lora-gateway-bridge"]
 	path = src/go/src/github.com/brocaar/lora-gateway-bridge
 	url = https://github.com/brocaar/lora-gateway-bridge
+[submodule "src/go/src/github.com/openchirp/lora-gateway-bridge"]
+	path = src/go/src/github.com/openchirp/lora-gateway-bridge
+	url = https://github.com/OpenChirp/lora-gateway-bridge.git

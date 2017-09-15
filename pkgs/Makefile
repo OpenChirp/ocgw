@@ -1,7 +1,7 @@
 # Craig Hesling <craig@hesling.com>
 # July 29, 2016
 
-.PHONY: all yodelgw yodelgw-compile yodelgw-environment
+.PHONY: all yodelgw yodelgw-compile yodelgw-environment clean-yodelgw clean-yodelgw-compile clean-yodelgw-environment
 
 PKG_YODELGW_DIR     = yodelgw
 PKG_YODELGW_DEBIAN  = $(PKG_YODELGW_DIR)/DEBIAN
@@ -30,7 +30,7 @@ SRC_DIR  = ../src
 
 LORA_GATEWAY_DIR        = $(SRC_DIR)/lora_gateway
 PACKET_FORWARDER_DIR    = $(SRC_DIR)/packet_forwarder
-LORA_GATEWAY_BRIDGE_DIR = $(SRC_DIR)/go/src/github.com/brocaar/lora-gateway-bridge
+LORA_GATEWAY_BRIDGE_DIR = $(SRC_DIR)/go/src/github.com/openchirp/lora-gateway-bridge
 
 all: yodelgw yodelgw-compile yodelgw-environment
 
@@ -48,6 +48,11 @@ builds/$(PKG_YODELGW_FILE):
 	cp $(PACKET_FORWARDER_DIR)/gps_pkt_fwd/gps_pkt_fwd $(PKG_YODELGW_DIR)/usr/sbin/
 	cp $(LORA_GATEWAY_BRIDGE_DIR)/build/lora-gateway-bridge $(PKG_YODELGW_DIR)/usr/sbin/
 	cp $(SRC_DIR)/lora_pkt_fwd $(PKG_YODELGW_DIR)/usr/sbin/
+	# Strip debug symbols from binaries, as per Debian packaging convention(and lintian warnings)
+	strip $(PKG_YODELGW_DIR)/usr/sbin/basic_pkt_fwd
+	strip $(PKG_YODELGW_DIR)/usr/sbin/beacon_pkt_fwd
+	strip $(PKG_YODELGW_DIR)/usr/sbin/gps_pkt_fwd
+	strip $(PKG_YODELGW_DIR)/usr/sbin/lora-gateway-bridge
 	# Copy over current version of systemd environment files
 	mkdir -p $(PKG_YODELGW_DIR)/etc/packet-forwarder
 	cp $(CONF_DIR)/lora-gateway-bridge.env $(PKG_YODELGW_DIR)/etc/
@@ -73,3 +78,10 @@ builds/$(PKG_YODELGW_ENVIRONMENT_FILE):
 	cd $(PKG_YODELGW_ENVIRONMENT_DIR); equivs-build $(shell basename $(PKG_YODELGW_ENVIRONMENT_CONTROL))
 	# Move the built package into the builds directory
 	mv $(PKG_YODELGW_ENVIRONMENT_DIR)/$(PKG_YODELGW_ENVIRONMENT_FILE) builds/
+
+clean-yodelgw:
+	$(RM) builds/$(PKG_YODELGW_FILE)
+clean-yodelgw-compile:
+	$(RM) builds/$(PKG_YODELGW_COMPILE_FILE)
+clean-yodelgw-environment:
+	$(RM) builds/$(PKG_YODELGW_ENVIRONMENT_FILE)
