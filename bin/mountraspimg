@@ -1,0 +1,53 @@
+#!/bin/bash
+# This utility will mount a Raspberry Pi image into a /tmp directory
+# usiing a loop device.
+# September 26, 2017
+# Craig Hesling <craig@hesling.com>
+
+cmd=$1
+path=$2
+
+usage() {
+	echo "This utility mounts an Raspberry Pi image (.img file) into a temporary direcory in /tmp"
+	echo "You can then use armchroot to chroot inside this mount point or simple change some files"
+	echo "Usage: mountraspimg <mount|umount> <raspberry_pi_image.img|mounted_directory>"
+	echo "Example:"
+	echo "        mountraspimg mount ~/Downloads/2017-blah-raspbian.img"
+	echo "        mountraspimg umount /tmp/raspfs-xGy"
+}
+
+if [ "$#" -lt 2 ]; then
+	usage
+	exit 1
+fi
+
+fdisk=/sbin/fdisk
+
+
+case $cmd in
+	mount)
+		image="$path"
+		bootoffset=$($fdisk -l "$image" | awk '/.img1/{print $2}')
+		bootsize=$($fdisk -l "$image" | awk '/.img1/{print $4}')
+		rootoffset=$($fdisk -l "$image" | awk '/.img2/{print $2}')
+		rootsize=$($fdisk -l "$image" | awk '/.img2/{print $4}')
+
+		echo "/     offset=$rootoffset size=$rootsize"
+		echo "/boot offset=$bootoffset size=$bootsize"
+
+		root=$(mktemp -d /tmp/raspfs-XXX)
+		echo "rootfs = $root"
+
+		sudo mount -o loop,offset=$(($rootoffset * 512)),sizelimit=$(($rootsize * 512)) "$image" "$root"
+		sudo mount -o loop,offset=$(($bootoffset * 512)),sizelimit=$(($bootsize * 512)) "$image" "$root/boot"
+		echo "Mounted at \"$root\""
+		;;
+	umount|unmount)
+		sudo umount "$path/boot"
+		sudo umount "$path"
+		rmdir "$path"
+		;;
+	*)
+		usage
+		exit 1
+esac
