@@ -52,7 +52,6 @@ builds/$(PKG_YODELGW_FILE):
 	# Copy over current version of systemd environment files
 	mkdir -p $(PKG_YODELGW_DIR)/etc/packet-forwarder
 	cp $(CONF_DIR)/lora-gateway-bridge.env $(PKG_YODELGW_DIR)/etc/
-	cp $(CONF_DIR)/packet-forwarder.env $(PKG_YODELGW_DIR)/etc/packet-forwarder/
 	# Copy over current version of packet-forwarder config files
 	cp $(CONF_DIR)/global_conf.json $(PKG_YODELGW_DIR)/etc/packet-forwarder/
 	cp $(CONF_DIR)/local_conf.json $(PKG_YODELGW_DIR)/etc/packet-forwarder/

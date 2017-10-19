@@ -6,7 +6,6 @@ Wants=network-online.target
 [Service]
 User=lora
 Group=lora
-EnvironmentFile=/etc/packet-forwarder/packet-forwarder.env
 WorkingDirectory=/etc/packet-forwarder
 ExecStart=/usr/sbin/lora_pkt_fwd_start
 #ExecReload=/bin/kill -HUP $MAINPID
