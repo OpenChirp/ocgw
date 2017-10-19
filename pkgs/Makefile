@@ -43,15 +43,11 @@ yodelgw-environment: builds/$(PKG_YODELGW_ENVIRONMENT_NAME)_$(PKG_YODELGW_ENVIRO
 builds/$(PKG_YODELGW_FILE):
 	# Copy over current version of packet_forwarder and lora-gateway-bridge binaries
 	mkdir -p $(PKG_YODELGW_DIR)/usr/sbin
-	cp $(PACKET_FORWARDER_DIR)/basic_pkt_fwd/basic_pkt_fwd $(PKG_YODELGW_DIR)/usr/sbin/
-	cp $(PACKET_FORWARDER_DIR)/beacon_pkt_fwd/beacon_pkt_fwd $(PKG_YODELGW_DIR)/usr/sbin/
-	cp $(PACKET_FORWARDER_DIR)/gps_pkt_fwd/gps_pkt_fwd $(PKG_YODELGW_DIR)/usr/sbin/
+	cp $(PACKET_FORWARDER_DIR)/lora_pkt_fwd/lora_pkt_fwd $(PKG_YODELGW_DIR)/usr/sbin/
 	cp $(LORA_GATEWAY_BRIDGE_DIR)/build/lora-gateway-bridge $(PKG_YODELGW_DIR)/usr/sbin/
-	cp $(SRC_DIR)/lora_pkt_fwd $(PKG_YODELGW_DIR)/usr/sbin/
+	cp $(SRC_DIR)/lora_pkt_fwd_start $(PKG_YODELGW_DIR)/usr/sbin/
 	# Strip debug symbols from binaries, as per Debian packaging convention(and lintian warnings)
-	strip $(PKG_YODELGW_DIR)/usr/sbin/basic_pkt_fwd
-	strip $(PKG_YODELGW_DIR)/usr/sbin/beacon_pkt_fwd
-	strip $(PKG_YODELGW_DIR)/usr/sbin/gps_pkt_fwd
+	strip $(PKG_YODELGW_DIR)/usr/sbin/lora_pkt_fwd
 	strip $(PKG_YODELGW_DIR)/usr/sbin/lora-gateway-bridge
 	# Copy over current version of systemd environment files
 	mkdir -p $(PKG_YODELGW_DIR)/etc/packet-forwarder
