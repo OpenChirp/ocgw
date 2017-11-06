@@ -36,8 +36,10 @@ esac
 
 systemctl stop lora-gateway-bridge.service
 systemctl stop packet-forwarder.service
+systemctl stop system-monitor.service
 systemctl disable lora-gateway-bridge.service
 systemctl disable packet-forwarder.service
+systemctl disable system-monitor.service
 
 
 exit 0

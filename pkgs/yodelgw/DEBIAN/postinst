@@ -13,8 +13,10 @@ systemctl enable dhcpcd.service
 
 systemctl enable lora-gateway-bridge.service
 systemctl enable packet-forwarder.service
+systemctl enable system-monitor.service
 systemctl start lora-gateway-bridge.service
 systemctl start packet-forwarder.service
+systemctl start system-monitor.service
 
 udevadm control --reload-rules
 
