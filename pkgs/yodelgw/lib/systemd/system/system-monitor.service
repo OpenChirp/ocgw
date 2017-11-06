@@ -1,0 +1,21 @@
+[Unit]
+Description=The OpenChirp System Monitor
+Documentation=https://github.com/OpenChirp/sysmonitor-device
+After=network-online.target auditd.service
+
+[Service]
+User=lora
+Group=lora
+EnvironmentFile=/etc/openchirp.env
+EnvironmentFile=/etc/system-monitor.env
+ExecStart=/usr/sbin/system-monitor
+#ExecReload=/bin/kill -HUP $MAINPID
+#KillMode=process
+Restart=on-failure
+RestartSec=5
+#RestartPreventExitStatus=25
+#Type=notify
+
+[Install]
+WantedBy=multi-user.target
+Alias=sysmon.service
