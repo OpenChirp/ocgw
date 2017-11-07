@@ -10,3 +10,6 @@
 [submodule "src/go/src/github.com/openchirp/lora-gateway-bridge"]
 	path = src/go/src/github.com/openchirp/lora-gateway-bridge
 	url = https://github.com/OpenChirp/lora-gateway-bridge.git
+[submodule "src/go/src/github.com/openchirp/sysmonitor-device"]
+	path = src/go/src/github.com/openchirp/sysmonitor-device
+	url = https://github.com/openchirp/sysmonitor-device
