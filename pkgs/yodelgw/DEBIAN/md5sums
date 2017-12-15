@@ -2,7 +2,7 @@
 74dbdbc239e07e97cf9eeff7bd189055  etc/apt/preferences.d/firmware-brcm80211_oldversion.pref
 863e569d0329ee59903414035a208b07  etc/system-monitor.env
 e353945303e4e5a0ff48d5ab58f33a87  etc/lora-gateway-bridge.env
-2c5133a471930d9133035de6d695d967  etc/packet-forwarder/global_conf.json
+6edf91aae566c66bbd4221e25179a1fb  etc/packet-forwarder/global_conf.json
 b47be7970981466ce0efd6e9d390e727  etc/packet-forwarder/local_conf.json
 b8ed18d243006758d12d977f61db353e  lib/udev/rules.d/75-legacy-eth-naming.rules
 2825ebc5f5246b366287e0cfbb54c0f9  lib/udev/rules.d/10-ttyusb-console.rules
