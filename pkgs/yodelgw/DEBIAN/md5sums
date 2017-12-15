@@ -14,7 +14,7 @@ cc40aba3d94a7b475422dfaa1b661de2  lib/systemd/system/system-monitor.service
 5a7905073bccd09f147acb62a59218f8  lib/systemd/system.conf.d/watchdog.conf
 21df11cc97f2c3efb99aa1985bbe9a49  usr/sbin/lora_pkt_fwd_start
 684e560ade72566fc3bcaa4b9ee62646  usr/sbin/system-monitor
-d08b80af15f1a6fce438d52d74802792  usr/sbin/lora-gateway-bridge
+5982bd81c2b3c4812d80bbd19362e9ad  usr/sbin/lora-gateway-bridge
 69c79fd3ee51b77e618a99a223dbd1c9  usr/sbin/lora_pkt_fwd
 df9c9ddf50ed66a680b7d2ac5c473642  usr/share/doc/yodelgw/copyright
 0715244b775ef3840e4f957a8b2b399a  usr/share/doc/yodelgw/README.Debian
