@@ -1,5 +1,5 @@
 121ba202f9fd7e7216cd5a9d364affdf  etc/openchirp.env
-e9ea9900e559acfb80745502786fad63  etc/sysmonitor-device.env
+5975bedd81b9c5f87495dc9dc9100ada  etc/sysmonitor-device.env
 74dbdbc239e07e97cf9eeff7bd189055  etc/apt/preferences.d/firmware-brcm80211_oldversion.pref
 e353945303e4e5a0ff48d5ab58f33a87  etc/lora-gateway-bridge.env
 6edf91aae566c66bbd4221e25179a1fb  etc/packet-forwarder/global_conf.json
