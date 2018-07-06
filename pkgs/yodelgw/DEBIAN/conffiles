@@ -1,6 +1,6 @@
 /etc/apt/preferences.d/firmware-brcm80211_oldversion.pref
 /etc/lora-gateway-bridge.env
 /etc/openchirp.env
-/etc/system-monitor.env
+/etc/sysmonitor-device.env
 /etc/packet-forwarder/global_conf.json
 /etc/packet-forwarder/local_conf.json

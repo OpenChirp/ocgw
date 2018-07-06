@@ -50,16 +50,19 @@ builds/$(PKG_YODELGW_FILE):
 	cp $(PACKET_FORWARDER_DIR)/lora_pkt_fwd/lora_pkt_fwd $(PKG_YODELGW_DIR)/usr/sbin/
 	cp $(LORA_GATEWAY_BRIDGE_DIR)/build/lora-gateway-bridge $(PKG_YODELGW_DIR)/usr/sbin/
 	cp $(SRC_DIR)/lora_pkt_fwd_start $(PKG_YODELGW_DIR)/usr/sbin/
-	cp $(SYSMONITOR_DIR)/sysmonitor-device $(PKG_YODELGW_DIR)/usr/sbin/system-monitor
+	cp $(SYSMONITOR_DIR)/sysmonitor-device $(PKG_YODELGW_DIR)/usr/sbin/sysmonitor-device
+	#make -C $(SYSMONITOR_DIR)/plugins
+	mkdir -p $(PKG_YODELGW_DIR)/usr/lib/sysmonitor-device
+	cp $(SYSMONITOR_DIR)/plugins/*.so $(PKG_YODELGW_DIR)/usr/lib/sysmonitor-device/
 	# Strip debug symbols from binaries, as per Debian packaging convention(and lintian warnings)
 	$(CROSS_COMPILE)strip $(PKG_YODELGW_DIR)/usr/sbin/lora_pkt_fwd
 	$(CROSS_COMPILE)strip $(PKG_YODELGW_DIR)/usr/sbin/lora-gateway-bridge
-	$(CROSS_COMPILE)strip $(PKG_YODELGW_DIR)/usr/sbin/system-monitor
+	$(CROSS_COMPILE)strip $(PKG_YODELGW_DIR)/usr/sbin/sysmonitor-device
 	# Copy over current version of systemd environment files
 	mkdir -p $(PKG_YODELGW_DIR)/etc/packet-forwarder
 	cp $(CONF_DIR)/lora-gateway-bridge.env $(PKG_YODELGW_DIR)/etc/
 	cp $(CONF_DIR)/openchirp.env $(PKG_YODELGW_DIR)/etc/
-	cp $(CONF_DIR)/system-monitor.env $(PKG_YODELGW_DIR)/etc/
+	cp $(CONF_DIR)/sysmonitor-device.env $(PKG_YODELGW_DIR)/etc/
 	# Copy over current version of packet-forwarder config files
 	cp $(CONF_DIR)/global_conf.json $(PKG_YODELGW_DIR)/etc/packet-forwarder/
 	cp $(CONF_DIR)/local_conf.json $(PKG_YODELGW_DIR)/etc/packet-forwarder/
