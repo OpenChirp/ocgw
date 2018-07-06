@@ -4,8 +4,7 @@ Documentation=https://docs.loraserver.io/lora-gateway-bridge/
 After=network-online.target auditd.service
 
 [Service]
-User=lora
-Group=lora
+DynamicUser=yes
 EnvironmentFile=/etc/lora-gateway-bridge.env
 ExecStart=/usr/sbin/lora-gateway-bridge
 #ExecReload=/bin/kill -HUP $MAINPID
@@ -14,6 +13,10 @@ Restart=on-failure
 RestartSec=5
 #RestartPreventExitStatus=25
 #Type=notify
+
+CPUQuota=20%
+MemoryHigh=40M
+MemoryMax=75M
 
 [Install]
 WantedBy=multi-user.target
