@@ -14,7 +14,7 @@ e18ac3a92306a5788e75ecc7281cc234  lib/systemd/system/sysmonitor-device.service
 5a7905073bccd09f147acb62a59218f8  lib/systemd/system.conf.d/watchdog.conf
 21df11cc97f2c3efb99aa1985bbe9a49  usr/sbin/lora_pkt_fwd_start
 c9018ed2e1224d143087313dcc0029ec  usr/sbin/lora-gateway-bridge
-69c79fd3ee51b77e618a99a223dbd1c9  usr/sbin/lora_pkt_fwd
+f10a2bfc0b925e4f7a868b143d2c50aa  usr/sbin/lora_pkt_fwd
 94917dafc65aea22e031b22aecd53f0d  usr/sbin/sysmonitor-device
 a973e017c747135fab2b9dd66d12626e  usr/lib/sysmonitor-device/raspberrypi.so
 63d1603ec10abe3c4c986ebbb1a79876  usr/lib/sysmonitor-device/network.so
