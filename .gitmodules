@@ -1,5 +1,5 @@
 [submodule "lora_gateway"]
-	path = src/lora_gateway
+	path = src/semtech_lora_gateway
 	url = https://github.com/Lora-net/lora_gateway.git
 [submodule "packet_forwarder"]
 	path = src/packet_forwarder
@@ -13,3 +13,6 @@
 [submodule "src/go/src/github.com/openchirp/sysmonitor-device"]
 	path = src/go/src/github.com/openchirp/sysmonitor-device
 	url = https://github.com/openchirp/sysmonitor-device
+[submodule "src/artur_packet_forwarder"]
+	path = src/artur_packet_forwarder
+	url = https://github.com/OpenChirp/oc_lora_gw_pf_dev.git
