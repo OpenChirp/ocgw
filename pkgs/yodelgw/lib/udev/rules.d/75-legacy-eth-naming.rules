@@ -1,6 +1,0 @@
-# This udev rule forces the old eth0 name on the only Raspberry Pi 
-# SMSC95 ethernet controller.
-#
-# Craig Hesling <craig@hesling.com>
-# August 13, 2016
-SUBSYSTEM=="net", ACTION=="add", DRIVERS=="smsc95xx", ATTR{address}=="?*", ATTR{dev_id}=="0x0", ATTR{type}=="1", KERNEL=="eth*", NAME="eth%n"
