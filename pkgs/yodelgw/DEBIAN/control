@@ -1,9 +1,9 @@
 Package: yodelgw
-Version: 4.10
+Version: 5.1
 Architecture: armhf
 Maintainer: Craig Hesling <craig@hesling.com>
 Installed-Size: 38
-Depends: libc6, init-system-helpers, adduser, rtl-sdr, swig, python-dev, wiringpi, ntp
+Depends: libc6, init-system-helpers, adduser, rtl-sdr, wiringpi
 Section: misc
 Priority: optional
 Homepage: http://OpenChirp.io
