@@ -6,13 +6,41 @@
 # Craig Hesling <craig@hesling.com>
 # August 12, 2016
 
+# Link-labs Blowfish
+#RPI_PIN=29
+#ACTIVE=high
+SERIAL=serial0
+SPI=spidev0.0
+
+# Will Concentrator
+RPI_PIN=22
+ACTIVE=high
+SERIAL=serial0
+SPI=spidev0.0
+
+# Check for serial and spidev
+if [ -n -c "/dev/$SERIAL" ]; then
+	echo "Error - Serial device $SERIAL does not exist. Configure with raspi-config."
+	exit 1
+fi
+if [ -n -c "/dev/$SPI" ]; then
+	echo "Error - SPI device $SPI does not exist. Configure with raspi-config."
+	exit 1
+fi
+
 # Reset concentrator board
-gpio -1 mode 29 out
-gpio -1 write 29 0
+if [ "$ACTIVE" = "low" ]; then
+	SET=0
+else
+	SET=1
+fi
+gpio -1 mode $RPI_PIN out
+gpio -1 write $RPI_PIN $((SET^1))
 sleep 0.1
-gpio -1 write 29 1
+gpio -1 write $RPI_PIN $SET
 sleep 0.1
-gpio -1 write 29 0
+gpio -1 write $RPI_PIN $((SET^1))
+
 sleep 0.1
 
 exec /usr/sbin/lora_pkt_fwd
