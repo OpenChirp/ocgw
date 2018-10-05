@@ -27,6 +27,18 @@ golang 1.6.1.
 
 ------
 
+# Steps without using `gwsetup`
+* Use `raspi-config` to enable serial.
+  Interfacing Options/Serial. No login terminal + Enable hardware.
+* Use `raspi-config` to enable SPI.
+* Install yodelgw package
+* Modify `/etc/openchirp.env` with Device ID and Device Token.
+* Modify `/etc/packet-forwarder/local_conf.json` with your own gateway ID.
+* Link the gateway service on OC website with gateway ID
+* Modify `/etc/lora-gateway-bridge.env` to use Device ID, Device Token, and Prefix
+
+------
+
 # Organization
 
 * pkgs: Contains the Debian packages to bring up a new Yodel gateway.
