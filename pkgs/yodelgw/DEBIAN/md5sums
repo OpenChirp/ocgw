@@ -1,4 +1,4 @@
-121ba202f9fd7e7216cd5a9d364affdf  etc/openchirp.env
+cb96efb9fa096089075821ff3fa9949f  etc/openchirp.env
 5975bedd81b9c5f87495dc9dc9100ada  etc/sysmonitor-device.env
 74dbdbc239e07e97cf9eeff7bd189055  etc/apt/preferences.d/firmware-brcm80211_oldversion.pref
 e353945303e4e5a0ff48d5ab58f33a87  etc/lora-gateway-bridge.env
@@ -15,7 +15,7 @@ e18ac3a92306a5788e75ecc7281cc234  lib/systemd/system/sysmonitor-device.service
 21df11cc97f2c3efb99aa1985bbe9a49  usr/sbin/lora_pkt_fwd_start
 c9018ed2e1224d143087313dcc0029ec  usr/sbin/lora-gateway-bridge
 f10a2bfc0b925e4f7a868b143d2c50aa  usr/sbin/lora_pkt_fwd
-94917dafc65aea22e031b22aecd53f0d  usr/sbin/sysmonitor-device
+72ebd8d29c0e94dcfb707560936cda99  usr/sbin/sysmonitor-device
 a973e017c747135fab2b9dd66d12626e  usr/lib/sysmonitor-device/raspberrypi.so
 63d1603ec10abe3c4c986ebbb1a79876  usr/lib/sysmonitor-device/network.so
 df9c9ddf50ed66a680b7d2ac5c473642  usr/share/doc/yodelgw/copyright
