@@ -15,9 +15,9 @@ e18ac3a92306a5788e75ecc7281cc234  lib/systemd/system/sysmonitor-device.service
 21df11cc97f2c3efb99aa1985bbe9a49  usr/sbin/lora_pkt_fwd_start
 c9018ed2e1224d143087313dcc0029ec  usr/sbin/lora-gateway-bridge
 f10a2bfc0b925e4f7a868b143d2c50aa  usr/sbin/lora_pkt_fwd
-005bd447b157b77a71d4fc18ab842230  usr/sbin/sysmonitor-device
-4840526d7be725240f8c036f4f55a911  usr/lib/sysmonitor-device/raspberrypi.so
-a364f26086fa647aff316c8bf66fc560  usr/lib/sysmonitor-device/network.so
+f955cf1706387391ff7abdae8ed34a90  usr/sbin/sysmonitor-device
+84347ae939f7b22861ec74bfdb0e0a7d  usr/lib/sysmonitor-device/raspberrypi.so
+3a9c1c0332512c208cf40604ee5d5632  usr/lib/sysmonitor-device/network.so
 df9c9ddf50ed66a680b7d2ac5c473642  usr/share/doc/yodelgw/copyright
 0715244b775ef3840e4f957a8b2b399a  usr/share/doc/yodelgw/README.Debian
 c8d9fb7857d6a0b6e28500efdcdd6752  usr/share/doc/yodelgw/changelog.gz
